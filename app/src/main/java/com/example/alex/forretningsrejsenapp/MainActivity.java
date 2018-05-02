@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -21,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Used for holding all expenses of current Trip
-    private List<Expense> myExpenses;
+    private ArrayList<Expense> myExpenses = new ArrayList<>(); 
 
+    //hvis kamera ikke virker, prøv som alternativt at tage fat på galleri.
     public void TakePicture (View v)
     {
 
