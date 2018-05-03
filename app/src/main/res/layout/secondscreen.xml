@@ -27,7 +27,7 @@
             android:layout_marginTop="20dp">
         </Spinner>
 
-
+fucking ændringer 
         <Button
             android:id="@+id/takepicture"
             android:layout_width="150dp"
