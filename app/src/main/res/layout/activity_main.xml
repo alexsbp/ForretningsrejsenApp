@@ -6,68 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.alex.forretningsrejsenapp.MainActivity">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/takepicture"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="100dp"
-            android:onClick="TakePicture"
-            android:text="Take Picture"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/addnote"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            android:onClick="AddNote"
-            android:text="Add Note"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/addmoney"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            android:onClick="AddMoney"
-            android:text="Add Money"
-            android:layout_gravity="center"/>
-
-
-
-        <android.support.v7.widget.FitWindowsLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center|bottom">
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:onClick="Save"
-                android:text="save" />
-
-        </android.support.v7.widget.FitWindowsLinearLayout>
-
-
-
-    </android.support.v7.widget.LinearLayoutCompat>
-
-
-
-
-
+    <Button
+        android:id="@+id/newexpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="AddNewExpense"
+        android:text="Add New Expense"
+        />
 
 </android.support.constraint.ConstraintLayout>

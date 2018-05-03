@@ -1,17 +1,11 @@
 package com.example.alex.forretningsrejsenapp;
 
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Used for holding all expenses of current Trip
-    private ArrayList<Expense> myExpenses = new ArrayList<>(); 
+    private ArrayList<Expense> myExpenses = new ArrayList<>();
 
     //hvis kamera ikke virker, prøv som alternativt at tage fat på galleri.
     public void TakePicture (View v)
@@ -30,16 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void AddNote (View v)
-    {
-
-    }
-    public void AddMoney (View v)
-    {
-
-    }
     public void Save (View v)
     {
 
+    }
+
+    public void AddNewExpense(View v)
+    {
+        Intent intent = new Intent(this, secondscreen.class);
+        startActivity(intent);
     }
 }
