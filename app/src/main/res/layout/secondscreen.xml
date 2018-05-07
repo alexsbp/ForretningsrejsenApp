@@ -17,18 +17,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="50px"
             android:gravity="center"
+            android:textSize="18dp"
             android:text="Choose Genre"/>
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="fill_parent"
+            android:layout_width="300px"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Choose genre">
         </Spinner>
 
-
+fucking ændringer 
         <Button
             android:id="@+id/takepicture"
             android:layout_width="150dp"
@@ -37,19 +40,25 @@
             android:layout_marginBottom="2dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="50dp"
             android:onClick="TakePicture"
             android:text="Take Picture" />
 
-        <TextView
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/priceText"
+            android:layout_width="300px"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
-            android:gravity="center|top"
-            android:text="Price"/>
+            android:text="Price"
+            android:inputType="number"
+            android:layout_gravity="center"/>
 
-
-
+        <EditText
+            android:id="@+id/descriptionText"
+            android:layout_width="300px"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:inputType="text"
+            android:layout_gravity="center"/>
 
         <android.support.v7.widget.FitWindowsLinearLayout
             android:layout_width="match_parent"
