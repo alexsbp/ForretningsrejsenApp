@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -27,7 +28,7 @@
             android:layout_marginTop="20dp">
         </Spinner>
 
-fucking ændringer 
+
         <Button
             android:id="@+id/takepicture"
             android:layout_width="150dp"
