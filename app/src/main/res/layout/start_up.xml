@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="394dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Welcome"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintHorizontal_bias="0.44"
+            tools:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintVertical_bias="0.842" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="279dp"
+            android:layout_height="77dp"
+            android:layout_marginTop="8dp"
+            android:text="Before u can start use this service, you need to create a BusinessTrip that u will use later on. "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:layout_constraintHorizontal_bias="0.44"
+            tools:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintVertical_bias="0.842" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="386dp"
+        android:layout_height="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="279dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            android:text="Type in the name of the business trip:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:layout_constraintHorizontal_bias="0.44"
+            tools:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintVertical_bias="0.842" />
+
+        <Button
+            android:id="@+id/firstTrip"
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Save Business Trip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newTripName"
+            tools:layout_constraintHorizontal_bias="0.44"
+            tools:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintVertical_bias="0.842"
+            tools:layout_marginVertical="9dp" />
+
+        <EditText
+            android:id="@+id/newTripName"
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:layout_constraintHorizontal_bias="0.44"
+            tools:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintVertical_bias="0.842" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
