@@ -5,7 +5,8 @@
     request permission to use a devices camera
     <uses-permission android:name="android.permission.CAMERA" />
     declare use of camera features
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera2" android:required="false"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
