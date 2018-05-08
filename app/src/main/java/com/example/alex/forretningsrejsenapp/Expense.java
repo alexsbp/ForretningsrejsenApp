@@ -11,16 +11,17 @@ public class Expense {
     public Object picture;
     public float cost;
     public String description;
-
+    public int id;
     //Properties
 
     //Constructor
-    public Expense(EnumExpense genre, Object picture, float cost, String description)
+    public Expense(EnumExpense genre, Object picture, float cost, String description, int id)
     {
         //Saves the given parameters locally
         this.genre = genre;
         this.picture = picture;
         this.cost  = cost;
         this.description = description;
+        this.id = id;
     }
 }
