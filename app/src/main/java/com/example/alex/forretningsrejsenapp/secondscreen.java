@@ -2,6 +2,7 @@ package com.example.alex.forretningsrejsenapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,11 +32,13 @@ import java.util.Date;
 
 public class secondscreen extends Activity implements AdapterView.OnItemSelectedListener
 {
-    Button btn;
+    Button btn, btn2;
     ImageView imgView;
     static final int CAM_REQUEST = 1;
     private int i = 1;
-    private ArrayList listImage;
+    Bundle extras;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +46,14 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         setContentView(R.layout.secondscreen);
 
         btn = (Button) findViewById(R.id.takepicture);
+        btn2 = (Button) findViewById(R.id.choosepicture);
         imgView = (ImageView) findViewById(R.id.image_view);
-        listImage = new ArrayList();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
+                //openGallery();
                 Intent camera_intent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
                 File file = null;
                 try {
@@ -62,6 +67,15 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         }
         );
 
+        btn2.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View view)
+                                   {
+                                       openGallery();
+                                   }
+                               }
+        );
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -73,9 +87,10 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
     }
 
     private File GetFile() throws IOException {
-        i++;
         //creates new folder in the external storage
         File folder = new File("sdcard/DCIM/Camera/Forretningsrejse_Pictures");
+        //File folder2 = new File(Environment.DIRECTORY_PICTURES);
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -86,16 +101,23 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
             folder.mkdir();
         }
 
-        File image_file = File.createTempFile(imageFileName, " .jpg", folder);
+        File image_file = File.createTempFile(imageFileName, " .jpg", storageDir);
         return image_file;
     }
 
-    @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data )
+    private void openGallery()
     {
-        //get image from directory and put it in imageview
-        String path = "sdcard/DCIM/Camera/Forretningsrejse_Pictures/app_image.png";
-        imgView.setImageDrawable(Drawable.createFromPath(path));
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI );
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            imgView.setImageURI(imageUri);
+        }
     }
 
     @Override

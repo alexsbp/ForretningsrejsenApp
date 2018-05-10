@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:onClick="AddNewExpense"
         android:text="Add New Expense"
+        android:gravity="center_horizontal"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="105dp" />
+        tools:layout_editor_absoluteY="105dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
