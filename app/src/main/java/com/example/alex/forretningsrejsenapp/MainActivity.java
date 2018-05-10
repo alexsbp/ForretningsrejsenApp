@@ -69,16 +69,7 @@ public class MainActivity extends AppCompatActivity {
         myBusinessTrip.add(new BusinessTrip(tripName, id));
     }
 
-    //hvis kamera ikke virker, prøv som alternativt at tage fat på galleri.
-    public void TakePicture (View v)
-    {
 
-    }
-
-    public void Save (View v)
-    {
-
-    }
 
     public void AddNewExpense(View v)
     {

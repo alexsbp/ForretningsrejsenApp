@@ -63,7 +63,8 @@
             tools:layout_constraintHorizontal_bias="0.44"
             tools:layout_constraintLeft_toLeftOf="parent"
             tools:layout_constraintRight_toRightOf="parent"
-            tools:layout_constraintVertical_bias="0.842" />
+            tools:layout_constraintVertical_bias="0.842"
+            tools:ignore="NotSibling" />
 
         <Button
             android:id="@+id/firstTrip"

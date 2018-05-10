@@ -1,8 +1,10 @@
 package com.example.alex.forretningsrejsenapp;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -35,9 +37,7 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
     Button btn, btn2;
     ImageView imgView;
     static final int CAM_REQUEST = 1;
-    private int i = 1;
-    Bundle extras;
-    private static final int PICK_IMAGE = 100;
+    private static final int PICK_IMAGE = 1;
     Uri imageUri;
 
     @Override
@@ -45,15 +45,14 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secondscreen);
 
-        btn = (Button) findViewById(R.id.takepicture);
+        //btn = (Button) findViewById(R.id.takepicture);
         btn2 = (Button) findViewById(R.id.choosepicture);
         imgView = (ImageView) findViewById(R.id.image_view);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        /*btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                //openGallery();
                 Intent camera_intent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
                 File file = null;
                 try {
@@ -65,15 +64,15 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
                 startActivityForResult(camera_intent, CAM_REQUEST);
             }
         }
-        );
+        );*/
 
         btn2.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View view)
-                                   {
-                                       openGallery();
-                                   }
-                               }
+            @Override
+            public void onClick(View view)
+            {
+                openGallery();
+            }
+        }
         );
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -88,12 +87,12 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
 
     private File GetFile() throws IOException {
         //creates new folder in the external storage
-        File folder = new File("sdcard/DCIM/Camera/Forretningsrejse_Pictures");
-        //File folder2 = new File(Environment.DIRECTORY_PICTURES);
+        File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "Test");
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File path = android.os.Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String imageFileName = "PIC_" + timeStamp + "_";
 
         //check if folder is available or not
         if (!folder.exists())
@@ -101,23 +100,49 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
             folder.mkdir();
         }
 
-        File image_file = File.createTempFile(imageFileName, " .jpg", storageDir);
+        File image_file = File.createTempFile(imageFileName, " .jpg", folder);
         return image_file;
     }
 
     private void openGallery()
     {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI );
-        startActivityForResult(gallery, PICK_IMAGE);
+        /*Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);*/
+
+
+
+        Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        getIntent.setType("image/*");
+
+        Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        pickIntent.setType("image/*");
+
+        Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
+
+        startActivityForResult(chooserIntent, PICK_IMAGE);
     }
 
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            imgView.setImageURI(imageUri);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && null != data)
+        {
+            Uri uri = data.getData();
+
+            try
+            {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                int nh = (int) ( bitmap.getHeight() * (512.0 / bitmap.getWidth()) );
+                Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 512, nh, true);
+                imgView.setImageBitmap(scaled);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     @Override
@@ -130,4 +155,9 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
     @Override
     public void onNothingSelected(AdapterView<?> adapterView)
     {}
+
+    public void Save (View v)
+    {
+
+    }
 }
