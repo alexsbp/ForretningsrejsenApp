@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     //removes a businessTrip from the list
     public void RemoveTrip(int id)
     {
