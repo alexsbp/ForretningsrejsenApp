@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ForretningsrejsenApp.iml" filepath="$PROJECT_DIR$/ForretningsrejsenApp.iml" />
       <module fileurl="file://C:\Users\Alex\Desktop\Dania\4. Semester\Android\Android App\ForretningsrejsenApp\.idea\ForretningsrejsenApp.iml" filepath="C:\Users\Alex\Desktop\Dania\4. Semester\Android\Android App\ForretningsrejsenApp\.idea\ForretningsrejsenApp.iml" />
+      <module fileurl="file://C:\Users\Alex\Desktop\Dania\4. Semester\ander\AndroidStudioProjects\ForretningsrejsenApp\ForretningsrejsenApp.iml" filepath="C:\Users\Alex\Desktop\Dania\4. Semester\ander\AndroidStudioProjects\ForretningsrejsenApp\ForretningsrejsenApp.iml" />
+      <module fileurl="file://C:\Users\Alex\Desktop\Dania\4. Semester\Alex\Desktop\Dania\4. Semester\Android\Android App\ForretningsrejsenApp\.idea\ForretningsrejsenApp.iml" filepath="C:\Users\Alex\Desktop\Dania\4. Semester\Alex\Desktop\Dania\4. Semester\Android\Android App\ForretningsrejsenApp\.idea\ForretningsrejsenApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Alex\Desktop\Dania\4. Semester\ander\AndroidStudioProjects\ForretningsrejsenApp\app\app.iml" filepath="C:\Users\Alex\Desktop\Dania\4. Semester\ander\AndroidStudioProjects\ForretningsrejsenApp\app\app.iml" />
     </modules>
   </component>
 </project>
