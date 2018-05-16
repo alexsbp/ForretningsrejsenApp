@@ -1,5 +1,7 @@
 package com.example.alex.forretningsrejsenapp;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 
 /**
@@ -20,12 +22,16 @@ public class BusinessTrip {
         this.name = tripName;
         this.id  = id;
     }
+    public BusinessTrip()
+    {
 
-    public void AddExpense(EnumExpense genre, Object picture, float cost, String description)
+    }
+
+    public void AddExpense(EnumExpense genre, Bitmap picture, float cost, String description)
     {
         //Makes the new expense and adds it to the trip list
         int id = myExpenses.size();
-        myExpenses.add(new Expense(genre,picture,cost,description, id));
+        myExpenses.add(new Expense(genre, picture, cost, description, id));
     }
 
     public void RemoveExpense(Expense currentExpense)

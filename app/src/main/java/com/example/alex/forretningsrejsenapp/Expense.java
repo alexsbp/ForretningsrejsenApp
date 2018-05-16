@@ -1,5 +1,7 @@
 package com.example.alex.forretningsrejsenapp;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by ander on 02-May-18.
  */
@@ -8,14 +10,14 @@ package com.example.alex.forretningsrejsenapp;
 public class Expense {
     //Fields
     public EnumExpense genre;
-    public Object picture;
+    public Bitmap picture;
     public float cost;
     public String description;
     public int id;
     //Properties
 
     //Constructor
-    public Expense(EnumExpense genre, Object picture, float cost, String description, int id)
+    public Expense(EnumExpense genre, Bitmap picture, float cost, String description, int id)
     {
         //Saves the given parameters locally
         this.genre = genre;

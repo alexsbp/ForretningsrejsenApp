@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,12 +18,28 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     //Fields
-    public ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<>();
+    public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
+    public static ArrayList<String> categories = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+
+        // Spinner Drop down elements
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         //Checks if this is the first time the app is started up
         if(myBusinessTrip.size() < 1)
@@ -67,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         //Makes the new expense and adds it to the trip list
         int id = myBusinessTrip.size();
         myBusinessTrip.add(new BusinessTrip(tripName, id));
+        categories.add(tripName);
     }
 
 
