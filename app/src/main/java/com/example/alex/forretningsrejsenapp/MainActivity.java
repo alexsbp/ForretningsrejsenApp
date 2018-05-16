@@ -6,16 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     //Fields
     public ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             //Sets view to Startup view
             setContentView(R.layout.start_up);
         }
-
 
         //button onClick
         final Button startUp = findViewById(R.id.firstTrip);
@@ -67,9 +71,27 @@ public class MainActivity extends AppCompatActivity {
         //Makes the new expense and adds it to the trip list
         int id = myBusinessTrip.size();
         myBusinessTrip.add(new BusinessTrip(tripName, id));
+        int i = 0;
+        for (BusinessTrip trip: myBusinessTrip)
+        {
+            //tripNames[i] = trip.name;
+        }
     }
 
-
+    //removes a businessTrip from the list
+    public void RemoveTrip(int id)
+    {
+        //removing the trip from the list
+        myBusinessTrip.remove(id);
+        //updates the spinner
+        //tripNames = new String[id];
+        int i = 0;
+        for (BusinessTrip trip: myBusinessTrip)
+        {
+            trip.id = i;
+           //tripNames[i] = trip.name;
+        }
+    }
 
     public void AddNewExpense(View v)
     {
