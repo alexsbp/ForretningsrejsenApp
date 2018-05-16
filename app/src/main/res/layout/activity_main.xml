@@ -31,7 +31,7 @@
                     android:layout_marginTop="52dp"
                     android:gravity="center_horizontal"
                     android:onClick="AddNewExpense"
-                    android:text="Add New Expense"
+                    android:text="@string/addNewExpense"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -59,7 +59,7 @@
                     android:layout_height="26dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="9dp"
-                    android:text="Current businesstrip"
+                    android:text="@string/currentBusinessTrip"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>

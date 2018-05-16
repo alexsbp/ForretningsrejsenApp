@@ -17,12 +17,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_marginTop="50px"
             android:gravity="left"
-            android:textSize="18dp"
-            android:text="Choose Genre"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
+            android:text="@string/chooseGenre"
+            android:textSize="18dp" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -44,7 +44,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Choose Picture" />
+            android:text="@string/choosePicture" />
 
         <ImageView
             android:id="@+id/image_view"
@@ -57,21 +57,21 @@
             android:id="@+id/priceText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Price"
-            android:inputType="numberDecimal"
             android:layout_gravity="center"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp" />
+            android:layout_marginRight="50dp"
+            android:hint="@string/price"
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/descriptionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description"
-            android:inputType="textMultiLine"
             android:layout_gravity="center"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp"
+            android:hint="@string/description"
+            android:inputType="textMultiLine" />
 
         <android.support.v7.widget.FitWindowsLinearLayout
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:onClick="Save"
-                android:text="save" />
+                android:text="@string/save" />
 
 
         </android.support.v7.widget.FitWindowsLinearLayout>
