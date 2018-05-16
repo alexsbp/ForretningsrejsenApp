@@ -13,35 +13,35 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     //Fields
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
+    public static ArrayList<String> tripNames = new ArrayList<String>();
     public static ArrayList<String> categories = new ArrayList<String>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        //sets the instance to database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference databaseRef = database.getReference();
 
-
-        // Spinner Drop down elements
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
+        // Makes the spinner
+        tripNames.add("test");
+        Spinner spinner = findViewById(R.id.businesstripSpinner);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tripNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
+
 
         //Checks if this is the first time the app is started up
         if(myBusinessTrip.size() < 1)
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                     //change scene
                     setContentView(R.layout.activity_main);
+
                 }
                 else
                 {
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }); //StartupListener End
-
     }
 
     //Adds a businessTrip to the list
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         //Makes the new expense and adds it to the trip list
         int id = myBusinessTrip.size();
         myBusinessTrip.add(new BusinessTrip(tripName, id));
-        categories.add(tripName);
+        tripNames.add(tripName);
         int i = 0;
         for (BusinessTrip trip: myBusinessTrip)
         {
