@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
     public static ArrayList<String> tripNames = new ArrayList<String>();
     public static ArrayList<String> categories = new ArrayList<String>();
+    public static ArrayList<String> categories2 = new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
 
+        categories2.add("bøv1");
+        categories2.add("bøv2");
+        categories2.add("bøv3");
+        categories2.add("bøv4");
+        categories2.add("bøv5");
+
+        secondscreen screen = new secondscreen();
+        screen.MainSpinner();
 
 
         //Checks if this is the first time the app is started up
@@ -43,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             //Sets view to Startup view
             setContentView(R.layout.start_up);
         }
+
 
         //button onClick
         final Button startUp = findViewById(R.id.firstTrip);
@@ -59,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
                     //adds the trip to list
                     NewTrip(tmpInput);
                     //removes the keyboard so it aint getting stuck
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    /*InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);*/
                     //change scene
                     setContentView(R.layout.activity_main);
 

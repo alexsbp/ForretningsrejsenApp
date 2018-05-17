@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alex.forretningsrejsenapp">
 
+
     request permission to use a devices camera
     <uses-permission android:name="android.permission.CAMERA" />
     declare use of camera features

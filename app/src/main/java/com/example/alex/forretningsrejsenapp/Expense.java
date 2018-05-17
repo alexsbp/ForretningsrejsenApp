@@ -1,6 +1,7 @@
 package com.example.alex.forretningsrejsenapp;
 
 import android.graphics.Bitmap;
+import android.widget.Spinner;
 
 /**
  * Created by ander on 02-May-18.
@@ -14,10 +15,12 @@ public class Expense {
     public float cost;
     public String description;
     public int id;
+
+    public String spinner;
     //Properties
 
     //Constructor
-    public Expense(EnumExpense genre, Bitmap picture, float cost, String description, int id)
+    public Expense(EnumExpense genre, Bitmap picture, float cost, String description, int id, String spinner)
     {
         //Saves the given parameters locally
         this.genre = genre;
@@ -25,5 +28,7 @@ public class Expense {
         this.cost  = cost;
         this.description = description;
         this.id = id;
+
+        this.spinner = spinner;
     }
 }
