@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         categories2.add("bøv5");
 
         secondscreen screen = new secondscreen();
-        screen.MainSpinner();
+        //screen.MainSpinner();
 
 
         //Checks if this is the first time the app is started up
@@ -70,12 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                     //adds the trip to list
                     NewTrip(tmpInput);
-                    //removes the keyboard so it aint getting stuck
-                    /*InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);*/
                     //change scene
                     setContentView(R.layout.activity_main);
-
                 }
                 else
                 {
