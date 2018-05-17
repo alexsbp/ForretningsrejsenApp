@@ -138,7 +138,7 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
 
     public void MainSpinner()
     {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
+        spinner2 = (Spinner) findViewById(R.id.businesstripSpinner);
         // Create an ArrayAdapter using the businesstrip list and a default spinner layout
         ArrayAdapter<String> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, MainActivity.categories2);
         // Specify the layout to use when the list of choices appears

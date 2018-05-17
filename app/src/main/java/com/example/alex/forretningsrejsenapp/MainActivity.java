@@ -105,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         tripNames.remove(tripForDelete.id);
         myBusinessTrip.remove(tripForDelete.id);
 
-        ArrayList<String> tripNames = new ArrayList<String>();
-
         //updates the spinner list + resets all id's
         int i = 0;
         for (BusinessTrip trip: myBusinessTrip)
