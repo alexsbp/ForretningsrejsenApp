@@ -13,10 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
         categories2.add("bøv3");
         categories2.add("bøv4");
         categories2.add("bøv5");
-        //sets the instance to database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference databaseRef = database.getReference();
 
         secondscreen screen = new secondscreen();
         screen.MainSpinner();
@@ -70,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                     //adds the trip to list
                     NewTrip(tmpInput);
                     //removes the keyboard so it aint getting stuck
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    /*InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);*/
                     //change scene
                     setContentView(R.layout.activity_main);
                 }
