@@ -15,31 +15,29 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     //Fields
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
     public static ArrayList<String> categories = new ArrayList<String>();
+    public static ArrayList<String> categories2 = new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        categories2.add("bøv1");
+        categories2.add("bøv2");
+        categories2.add("bøv3");
+        categories2.add("bøv4");
+        categories2.add("bøv5");
 
+        secondscreen screen = new secondscreen();
+        screen.MainSpinner();
 
-        // Spinner Drop down elements
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
 
         //Checks if this is the first time the app is started up
         if(myBusinessTrip.size() < 1)
@@ -96,4 +94,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, secondscreen.class);
         startActivity(intent);
     }
+
 }

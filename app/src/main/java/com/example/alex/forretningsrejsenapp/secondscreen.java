@@ -32,11 +32,12 @@ import java.util.Date;
 
 public class secondscreen extends Activity implements AdapterView.OnItemSelectedListener
 {
-    Button btn, btn2;
+    Button btn2;
     ImageView imgView;
     EditText priceTxt;
     EditText descriptionTxt;
-    static final int CAM_REQUEST = 1;
+    Spinner spinner, spinner2;
+    String spinnerItem;
     private static final int PICK_IMAGE = 1;
 
     public static Bitmap scaled;
@@ -47,29 +48,12 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secondscreen);
 
-        //btn = (Button) findViewById(R.id.takepicture);
         btn2 = (Button) findViewById(R.id.choosepicture);
         imgView = (ImageView) findViewById(R.id.image_view);
         priceTxt = (EditText) findViewById(R.id.priceText);
         descriptionTxt = (EditText) findViewById(R.id.descriptionText);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
-
-        /*btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent camera_intent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
-                File file = null;
-                try {
-                    file = GetFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                startActivityForResult(camera_intent, CAM_REQUEST);
-            }
-        }
-        );*/
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,36 +64,17 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         }
         );
 
-
-
-
+        // Create an ArrayAdapter using the businesstrip list and a default spinner layout
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, EnumExpense.values());
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.FROYO)
-    private File GetFile() throws IOException {
-        //creates new folder in the external storage
-        File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "Test");
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File path = android.os.Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "PIC_" + timeStamp + "_";
-
-        //check if folder is available or not
-        if (!folder.exists())
-        {
-            folder.mkdir();
-        }
-
-        File image_file = File.createTempFile(imageFileName, " .jpg", folder);
-        return image_file;
-    }
 
     private void openGallery()
     {
-        /*Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);*/
-
         //makes sure its only pictures that is being displayed
         Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
         getIntent.setType("image/*");
@@ -129,7 +94,6 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && null != data)
         {
             Uri uri = data.getData();
-
             try
             {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -159,24 +123,27 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
     {
         float priceText = Float.parseFloat(priceTxt.getText().toString());
         String descriptionText = descriptionTxt.getText().toString();
+        spinnerItem = spinner.getSelectedItem().toString();
         try {
 
-            MainActivity.myBusinessTrip.get(0).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText);
+            MainActivity.myBusinessTrip.get(0).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText, spinnerItem);
             Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
-
-            Spinner spinner = (Spinner) findViewById(R.id.spinner);
-            // Create an ArrayAdapter using the businesstrip list and a default spinner layout
-            ArrayAdapter<BusinessTrip> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, MainActivity.categories);
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
-            // Apply the adapter to the spinner
-            spinner.setAdapter(adapter);
-
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
 
+    }
+
+    public void MainSpinner()
+    {
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
+        // Create an ArrayAdapter using the businesstrip list and a default spinner layout
+        ArrayAdapter<String> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, MainActivity.categories2);
+        // Specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+        // Apply the adapter to the spinner
+        spinner2.setAdapter(adapter2);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.alex.forretningsrejsenapp;
 
 import android.graphics.Bitmap;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -27,11 +28,11 @@ public class BusinessTrip {
 
     }
 
-    public void AddExpense(EnumExpense genre, Bitmap picture, float cost, String description)
+    public void AddExpense(EnumExpense genre, Bitmap picture, float cost, String description, String spinner)
     {
         //Makes the new expense and adds it to the trip list
         int id = myExpenses.size();
-        myExpenses.add(new Expense(genre, picture, cost, description, id));
+        myExpenses.add(new Expense(genre, picture, cost, description, id, spinner));
     }
 
     public void RemoveExpense(Expense currentExpense)
