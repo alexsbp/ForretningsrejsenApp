@@ -18,7 +18,7 @@
             android:layout_width="285dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Welcome"
+            android:text="@string/welcome"
             android:textAppearance="@android:style/TextAppearance.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,15 +55,14 @@
             android:id="@+id/textView3"
             android:layout_width="279dp"
             android:layout_height="27dp"
-            android:layout_marginTop="8dp"
-            android:text="Type in the name of the business trip:"
+            android:text="@string/nameOfTrip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="NotSibling"
             tools:layout_constraintHorizontal_bias="0.44"
             tools:layout_constraintLeft_toLeftOf="parent"
             tools:layout_constraintRight_toRightOf="parent"
-            tools:layout_constraintVertical_bias="0.842"
-            tools:ignore="NotSibling" />
+            tools:layout_constraintVertical_bias="0.842" />
 
         <Button
             android:id="@+id/firstTrip"

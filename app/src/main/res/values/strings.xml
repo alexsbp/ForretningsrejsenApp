@@ -1,8 +1,13 @@
 <resources>
+    <string name="app_name">Forretnings Rejsen</string>
+
+    //Startup
+    <string name="welcome">Welcome</string>
+    <string name="nameOfTrip">Type In The Name Of The Business Trip:</string>
+
     //MainActivity Design
-    <string name="app_name">ForretningsrejsenApp</string>
     <string name="addNewExpense">Add New Expense</string>
-    <string name="currentBusinessTrip">Choose Current BusinessTrip:</string>
+    <string name="currentBusinessTrip">Choose Current Business Trip:</string>
 
     //SecondScreen Design
     <string name="chooseGenre">Choose Genre:</string>

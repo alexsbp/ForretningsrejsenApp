@@ -13,9 +13,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,12 +27,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //sets the instance to database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference databaseRef = database.getReference();
-
         // Makes the spinner
         tripNames.add("test");
+        tripNames.add("test2");
         Spinner spinner = findViewById(R.id.businesstripSpinner);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tripNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -87,22 +81,21 @@ public class MainActivity extends AppCompatActivity {
         //Makes the new expense and adds it to the trip list
         int id = myBusinessTrip.size();
         myBusinessTrip.add(new BusinessTrip(tripName, id));
+        //adds the trip to the list
         tripNames.add(tripName);
-        int i = 0;
-        for (BusinessTrip trip: myBusinessTrip)
-        {
-            //tripNames[i] = trip.name;
-        }
     }
 
 
     //removes a businessTrip from the list
-    public void RemoveTrip(int id)
+    public void RemoveTrip(BusinessTrip tripForDelete)
     {
-        //removing the trip from the list
-        myBusinessTrip.remove(id);
-        //updates the spinner
-        //tripNames = new String[id];
+        //removing the trip from the list + spinner list
+        tripNames.remove(tripForDelete.id);
+        myBusinessTrip.remove(tripForDelete.id);
+
+        ArrayList<String> tripNames = new ArrayList<String>();
+
+        //updates the spinner list + resets all id's
         int i = 0;
         for (BusinessTrip trip: myBusinessTrip)
         {
