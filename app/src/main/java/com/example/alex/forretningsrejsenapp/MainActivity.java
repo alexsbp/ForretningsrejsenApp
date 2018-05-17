@@ -8,17 +8,22 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     //Fields
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
+    public static ArrayList<String> tripNames = new ArrayList<String>();
     public static ArrayList<String> categories = new ArrayList<String>();
     public static ArrayList<String> categories2 = new ArrayList<String>();
 
@@ -34,6 +39,9 @@ public class MainActivity extends AppCompatActivity{
         categories2.add("bøv3");
         categories2.add("bøv4");
         categories2.add("bøv5");
+        //sets the instance to database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference databaseRef = database.getReference();
 
         secondscreen screen = new secondscreen();
         screen.MainSpinner();
@@ -84,15 +92,33 @@ public class MainActivity extends AppCompatActivity{
         //Makes the new expense and adds it to the trip list
         int id = myBusinessTrip.size();
         myBusinessTrip.add(new BusinessTrip(tripName, id));
-        categories.add(tripName);
+        tripNames.add(tripName);
+        int i = 0;
+        for (BusinessTrip trip: myBusinessTrip)
+        {
+            //tripNames[i] = trip.name;
+        }
     }
 
 
+    //removes a businessTrip from the list
+    public void RemoveTrip(int id)
+    {
+        //removing the trip from the list
+        myBusinessTrip.remove(id);
+        //updates the spinner
+        //tripNames = new String[id];
+        int i = 0;
+        for (BusinessTrip trip: myBusinessTrip)
+        {
+            trip.id = i;
+           //tripNames[i] = trip.name;
+        }
+    }
 
     public void AddNewExpense(View v)
     {
         Intent intent = new Intent(this, secondscreen.class);
         startActivity(intent);
     }
-
 }

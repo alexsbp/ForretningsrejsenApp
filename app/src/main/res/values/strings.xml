@@ -1,5 +1,15 @@
 <resources>
+    //MainActivity Design
     <string name="app_name">ForretningsrejsenApp</string>
+    <string name="addNewExpense">Add New Expense</string>
+    <string name="currentBusinessTrip">Choose Current BusinessTrip:</string>
+
+    //SecondScreen Design
+    <string name="chooseGenre">Choose Genre:</string>
+    <string name="choosePicture">Choose Picture</string>
+    <string name="save">Save</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
 
     <string-array name="dropdown_array">
         <item>1</item>
