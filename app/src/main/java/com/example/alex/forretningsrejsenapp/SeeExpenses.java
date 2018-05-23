@@ -19,8 +19,6 @@ public class SeeExpenses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seeexpenses);
 
-
-
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainScreen.tripNames);
         ListView ExpensesListView = (ListView) findViewById(R.id.ExpensesListView);
         ExpensesListView.setAdapter(adapter);

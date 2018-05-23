@@ -5,5 +5,5 @@ package com.example.alex.forretningsrejsenapp;
  */
 
 public enum EnumExpense {
-    Transport, Food, Accommodation
+    Genre, Transport, Food, Accommodation
 }

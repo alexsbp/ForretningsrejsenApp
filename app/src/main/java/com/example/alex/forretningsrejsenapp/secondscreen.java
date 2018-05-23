@@ -117,24 +117,46 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
 
     public void Save (View v)
     {
-        float priceText = Float.parseFloat(priceTxt.getText().toString());
-        int listSize = MainScreen.myBusinessTrip.size();
-        String descriptionText = descriptionTxt.getText().toString();
-        spinnerItem = spinner.getSelectedItem().toString();
-        try {
+        float priceText = 0;
 
-            ((BusinessTrip)MainScreen.currentTrip).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText, spinnerItem);
-            //Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
-            i++;
-            finish();
-            Toast.makeText(this, "list size: " + listSize, Toast.LENGTH_LONG).show();
+        try
+        {
+            if (priceTxt.getText() != null)
+            {
+                priceText = Float.parseFloat(priceTxt.getText().toString());
 
+                int listSize = MainScreen.myBusinessTrip.size();
+                String descriptionText = descriptionTxt.getText().toString();
+                spinnerItem = spinner.getSelectedItem().toString();
+                try {
+                    //Checks if the input isnt null
+                    if(descriptionText.length() > 0 && priceText != 0 && scaled != null && spinnerItem != EnumExpense.Genre.toString())
+                    {
+                        ((BusinessTrip)MainScreen.currentTrip).AddExpense(scaled, priceText, descriptionText, spinnerItem);
+                        //Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
+                        i++;
+                        finish();
+                        Toast.makeText(this, "list size: " + listSize, Toast.LENGTH_LONG).show();
+                    }else
+                        Toast.makeText(this, "description text, genre or picture1337 is missing", Toast.LENGTH_LONG).show();
 
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            else
+            {
+                Toast.makeText(this, "Price text is empty", Toast.LENGTH_LONG).show();
+            }
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            Toast.makeText(this, "Price text is empty", Toast.LENGTH_LONG).show();
         }
+
+
 
     }
 

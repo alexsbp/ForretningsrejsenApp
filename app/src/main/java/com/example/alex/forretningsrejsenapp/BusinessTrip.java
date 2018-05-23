@@ -28,11 +28,11 @@ public class BusinessTrip {
 
     }
 
-    public void AddExpense(EnumExpense genre, Bitmap picture, float cost, String description, String spinner)
+    public void AddExpense(Bitmap picture, float cost, String description, String Genre)
     {
         //Makes the new expense and adds it to the trip list
         int id = myExpenses.size();
-        myExpenses.add(new Expense(genre, picture, cost, description, id, spinner));
+        myExpenses.add(new Expense(picture, cost, description, id, Genre));
     }
 
     public void RemoveExpense(Expense currentExpense)
@@ -41,7 +41,7 @@ public class BusinessTrip {
         myExpenses.remove(currentExpense.id);
     }
 
-    public int CalcTotalPrice(EnumExpense sortGenre)
+    public int CalcTotalPrice(String sortGenre)
     {
         //local field
         int totalCost = 0;
@@ -49,7 +49,7 @@ public class BusinessTrip {
         for (Expense expense: myExpenses)
         {
             //sorts by wanted enum (if null use all)
-            if(expense.genre == sortGenre|| sortGenre == null)
+            if(expense.spinner == sortGenre|| sortGenre == null)
             {
                 //adds up the price
                 totalCost += expense.cost;
