@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Forretnings Rejsen</string>
 
-    //Startup
+    //Startup Design
     <string name="welcome">Welcome</string>
     <string name="nameOfTrip">Type In The Name Of The Business Trip:</string>
 

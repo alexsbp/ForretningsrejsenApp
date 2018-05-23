@@ -136,6 +136,7 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         {
             e.printStackTrace();
         }
+
     }
 
     private void HideKeyboard(View v)
