@@ -8,6 +8,7 @@
     //MainActivity Design
     <string name="addNewExpense">Add New Expense</string>
     <string name="currentBusinessTrip">Choose Current Business Trip:</string>
+    <string name="SeeExpenses">See Expenses</string>
 
     //SecondScreen Design
     <string name="chooseGenre">Choose Genre:</string>

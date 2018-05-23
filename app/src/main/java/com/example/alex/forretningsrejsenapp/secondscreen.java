@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,12 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Alex on 03-05-2018.
@@ -36,9 +28,11 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
     ImageView imgView;
     EditText priceTxt;
     EditText descriptionTxt;
-    Spinner spinner, spinner2;
+    Spinner spinner;
     String spinnerItem;
     private static final int PICK_IMAGE = 1;
+    int i = 0;
+
 
     public static Bitmap scaled;
     Bitmap bitmap;
@@ -52,7 +46,9 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         imgView = (ImageView) findViewById(R.id.image_view);
         priceTxt = (EditText) findViewById(R.id.priceText);
         descriptionTxt = (EditText) findViewById(R.id.descriptionText);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
+        LinearLayoutCompat layout = (LinearLayoutCompat) findViewById(R.id.mainLayout);
+
 
 
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +61,7 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         );
 
         // Create an ArrayAdapter using the businesstrip list and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, EnumExpense.values());
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, EnumExpense.values());
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
         // Apply the adapter to the spinner
@@ -122,28 +118,34 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
     public void Save (View v)
     {
         float priceText = Float.parseFloat(priceTxt.getText().toString());
+        int listSize = MainScreen.myBusinessTrip.size();
         String descriptionText = descriptionTxt.getText().toString();
         spinnerItem = spinner.getSelectedItem().toString();
         try {
 
-            MainActivity.myBusinessTrip.get(0).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText, spinnerItem);
-            Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
+
+            MainScreen.myBusinessTrip.get(i).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText, spinnerItem);
+            //Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
+            i++;
+            finish();
+            Toast.makeText(this, "list size: " + listSize, Toast.LENGTH_LONG).show();
+
+
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-
     }
 
-    public void MainSpinner()
+    private void HideKeyboard(View v)
     {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        // Create an ArrayAdapter using the businesstrip list and a default spinner layout
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, MainActivity.categories2);
-        // Specify the layout to use when the list of choices appears
-        adapter2.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
-        // Apply the adapter to the spinner
-        spinner2.setAdapter(adapter2);
+        v = this.getCurrentFocus();
+        if (v != null)
+        {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+
     }
 }
