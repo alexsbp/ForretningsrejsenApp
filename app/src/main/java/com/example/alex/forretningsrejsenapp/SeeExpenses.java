@@ -28,8 +28,7 @@ public class SeeExpenses extends AppCompatActivity {
         ExpensesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Object item = adapterView.getItemAtPosition(i);
-                Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                MainScreen.currentTrip = adapterView.getItemAtPosition(i);
                 finish();
             }
         });

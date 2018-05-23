@@ -123,8 +123,7 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         spinnerItem = spinner.getSelectedItem().toString();
         try {
 
-
-            MainScreen.myBusinessTrip.get(i).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText, spinnerItem);
+            ((BusinessTrip)MainScreen.currentTrip).AddExpense(EnumExpense.Transport, scaled, priceText, descriptionText, spinnerItem);
             //Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
             i++;
             finish();

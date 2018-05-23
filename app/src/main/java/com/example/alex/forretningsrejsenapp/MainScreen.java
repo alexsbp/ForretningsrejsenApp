@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -22,6 +23,7 @@ public class MainScreen extends Activity {
     //Fields
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
     public static ArrayList<String> tripNames = new ArrayList<String>();
+    public static Object currentTrip;
     public static String[]  myStringArray={"A","B","C"};
 
     ListView listView;
@@ -66,9 +68,7 @@ public class MainScreen extends Activity {
                 {
                     //adds the trip to list
                     NewTrip(tmpInput);
-                    //removes the keyboard so it aint getting stuck
-                    /*InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);*/
+                    currentTrip = myBusinessTrip.get(0);
                     //change scene
                     setContentView(R.layout.main_screen);
                 }
