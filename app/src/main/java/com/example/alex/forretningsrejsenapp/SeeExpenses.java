@@ -24,5 +24,10 @@ public class SeeExpenses extends AppCompatActivity{
         ExpensesListView.setAdapter(adapter);
     }
 
+    public void TestMethod()
+    {
+        
+    }
+
 
 }
