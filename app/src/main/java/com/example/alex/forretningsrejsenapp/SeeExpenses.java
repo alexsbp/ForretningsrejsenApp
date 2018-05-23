@@ -10,8 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class SeeExpenses extends AppCompatActivity{
+public class SeeExpenses extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,15 +20,18 @@ public class SeeExpenses extends AppCompatActivity{
         setContentView(R.layout.seeexpenses);
 
 
-        ListAdapter adapter = new ArrayAdapter<BusinessTrip>(this, android.R.layout.simple_list_item_1, MainScreen.myBusinessTrip);
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainScreen.tripNames);
         ListView ExpensesListView = (ListView) findViewById(R.id.ExpensesListView);
         ExpensesListView.setAdapter(adapter);
+
+        ExpensesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Object item = adapterView.getItemAtPosition(i);
+                Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
     }
-
-    public void TestMethod()
-    {
-
-    }
-
-
 }

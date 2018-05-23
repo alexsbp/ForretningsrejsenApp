@@ -33,7 +33,7 @@ public class MainScreen extends Activity {
 
         for (BusinessTrip B : myBusinessTrip)
         {
-
+            
         }
 
        /* // Makes the spinner
