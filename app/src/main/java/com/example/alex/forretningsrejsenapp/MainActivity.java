@@ -6,6 +6,10 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
+
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,4 +22,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainScreen.class);
         startActivity(intent);
     }
+    */
 }
