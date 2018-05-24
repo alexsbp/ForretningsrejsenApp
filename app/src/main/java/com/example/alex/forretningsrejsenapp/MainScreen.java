@@ -24,7 +24,6 @@ public class MainScreen extends Activity {
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
     public static ArrayList<String> tripNames = new ArrayList<String>();
     public static Object currentTrip;
-    public static String[]  myStringArray={"A","B","C"};
     public int totalCost;
 
     ListView listView;
