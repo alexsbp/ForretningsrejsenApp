@@ -25,8 +25,7 @@ public class MainScreen extends Activity {
     public static ArrayList<String> tripNames = new ArrayList<String>();
     public static Object currentTrip;
     public int totalCost;
-
-    ListView listView;
+    public static String newName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +39,21 @@ public class MainScreen extends Activity {
             setContentView(R.layout.start_up);
         }
 
+
         //button onClick
         final Button startUp = findViewById(R.id.firstTrip);
-        final EditText userInput = (EditText)findViewById(R.id.newTripName);
+        final EditText userInput = findViewById(R.id.newTripName);
 
         //StartupListener:
         startUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //gets the input
-                String tmpInput = userInput.getText().toString();
+               newName = userInput.getText().toString();
                 //Checks if the input isnt null
-                if(tmpInput.length() > 0)
+                if(newName.length() > 0)
                 {
                     //adds the trip to list
-                    NewTrip(tmpInput);
+                    NewTrip(v);
                     currentTrip = myBusinessTrip.get(0);
                     //change scene
                     setContentView(R.layout.main_screen);
@@ -69,18 +69,29 @@ public class MainScreen extends Activity {
     }
 
     //Adds a businessTrip to the list
-    public void NewTrip(String tripName)
+    public void NewTrip(View v)
     {
-        //Makes the new expense and adds it to the trip list
-        int id = myBusinessTrip.size();
-        myBusinessTrip.add(new BusinessTrip(tripName, id));
-        //adds the trip to the list
-        tripNames.add(tripName);
+        if(newName.length()>0){
+            //Makes the new expense and adds it to the trip list
+            int id = myBusinessTrip.size();
+            myBusinessTrip.add(new BusinessTrip(newName, id));
+            //adds the trip to the list
+            tripNames.add(newName);
+            setContentView(R.layout.main_screen);
+        }
+        else
+            {
+            //makes a toast to tell user the error
+            Toast toast = Toast.makeText(MainScreen.this  , "You need to enter a name for the business trip", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        newName =null;
     }
 
     //removes a businessTrip from the list
     public void RemoveTrip(BusinessTrip tripForDelete)
     {
+        /*
         //removing the trip from the list + spinner list
         tripNames.remove(tripForDelete.id);
         myBusinessTrip.remove(tripForDelete.id);
@@ -105,6 +116,8 @@ public class MainScreen extends Activity {
         //resets the lists so the tmp lists gets set instead
         myBusinessTrip = tmp;
         tripNames = tmpNames;
+        currentTrip = myBusinessTrip.get(0);
+    */
     }
 
     public void AddNewExpense(View v)
@@ -122,5 +135,26 @@ public class MainScreen extends Activity {
     public void Cost (View v)
     {
         totalCost = ((BusinessTrip) currentTrip).CalcTotalPrice(null);
+    }
+
+    public void RemoveCurrently (View v)
+    {
+        if(myBusinessTrip.size()>1){
+            RemoveTrip((BusinessTrip)currentTrip);
+        }else{
+            //makes a toast to tell user the error
+            Toast toast = Toast.makeText(MainScreen.this  , "Must have minimum 2 businesstrips, Create a new before deleting this trip", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+    public void SaveNameh (View v){
+
+        final  EditText newnametrip = findViewById(R.id.businesstripNameText);
+        newName = newnametrip.getText().toString();
+        NewTrip(v);
+    }
+
+    public void NewButton(View v){
+        setContentView(R.layout.newtrip);
     }
 }
