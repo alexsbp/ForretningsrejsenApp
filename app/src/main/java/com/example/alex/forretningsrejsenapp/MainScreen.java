@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 
@@ -26,19 +26,23 @@ public class MainScreen extends Activity {
     public static Object currentTrip;
     public int totalCost;
     public static String newName;
-
+    //Lyd Fields
+    public MediaPlayer mediaPlayer;
+    private TextView txsong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
-
+        //MediaPlayer til lyd i app
+        txsong.setText("Song.mp3");
+        mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //Checks if this is the first time the app is started up
         if(myBusinessTrip.size() < 1)
         {
             //Sets view to Startup view
             setContentView(R.layout.start_up);
         }
-
+        mediaPlayer.start();
 
         //button onClick
         final Button startUp = findViewById(R.id.firstTrip);
