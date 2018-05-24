@@ -24,6 +24,10 @@ public class MainScreen extends Activity {
     public static ArrayList<BusinessTrip> myBusinessTrip = new ArrayList<BusinessTrip>();
     public static ArrayList<String> tripNames = new ArrayList<String>();
     public static Object currentTrip;
+    public static String[]  myStringArray={"A","B","C"};
+    public int totalCost;
+
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,5 +118,10 @@ public class MainScreen extends Activity {
     {
         Intent intent = new Intent(this, SeeExpenses.class);
         startActivity(intent);
+    }
+
+    public void Cost (View v)
+    {
+        totalCost = ((BusinessTrip) currentTrip).CalcTotalPrice(null);
     }
 }
