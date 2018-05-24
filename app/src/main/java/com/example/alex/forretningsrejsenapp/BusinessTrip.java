@@ -14,7 +14,7 @@ public class BusinessTrip {
     //Field
     public String name;
     public int id;
-    private ArrayList<Expense> myExpenses = new ArrayList<>();
+    public  ArrayList<Expense> myExpenses = new ArrayList<>();
 
     //Constructor
     public BusinessTrip(String tripName, int id)

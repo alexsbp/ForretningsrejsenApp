@@ -134,16 +134,13 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
                     {
                         ((BusinessTrip)MainScreen.currentTrip).AddExpense(scaled, priceText, descriptionText, spinnerItem);
                         //Toast.makeText(this, "added to list", Toast.LENGTH_LONG).show();
-                        i++;
+                        MainScreen.mediaPlayer.start();
                         finish();
-                        Toast.makeText(this, "list size: " + listSize, Toast.LENGTH_LONG).show();
-                    }else
-                        Toast.makeText(this, "description text, genre or picture1337 is missing", Toast.LENGTH_LONG).show();
-
+                    }
                 }
                 catch (Exception e)
                 {
-                    e.printStackTrace();
+                    Toast.makeText(this, "description text, genre or picture1337 is missing", Toast.LENGTH_LONG).show();
                 }
             }
             else
@@ -155,19 +152,5 @@ public class secondscreen extends Activity implements AdapterView.OnItemSelected
         {
             Toast.makeText(this, "Price text is empty", Toast.LENGTH_LONG).show();
         }
-
-
-
-    }
-
-    private void HideKeyboard(View v)
-    {
-        v = this.getCurrentFocus();
-        if (v != null)
-        {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-        }
-
     }
 }

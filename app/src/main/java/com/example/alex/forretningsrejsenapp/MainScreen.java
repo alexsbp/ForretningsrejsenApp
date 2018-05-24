@@ -27,23 +27,19 @@ public class MainScreen extends Activity {
     public int totalCost;
     public static String newName;
     //Lyd Fields
-    public MediaPlayer mediaPlayer;
-    private TextView txsong;
+    public static MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
         //MediaPlayer til lyd i app
-        txsong.setText("Song.mp3");
-        mediaPlayer = MediaPlayer.create(this, R.raw.song);
+        mediaPlayer = MediaPlayer.create(this, R.raw.wosh);
         //Checks if this is the first time the app is started up
         if(myBusinessTrip.size() < 1)
         {
             //Sets view to Startup view
             setContentView(R.layout.start_up);
         }
-        mediaPlayer.start();
-
         //button onClick
         final Button startUp = findViewById(R.id.firstTrip);
         final EditText userInput = findViewById(R.id.newTripName);
@@ -59,8 +55,6 @@ public class MainScreen extends Activity {
                     //adds the trip to list
                     NewTrip(v);
                     currentTrip = myBusinessTrip.get(0);
-                    //change scene
-                    setContentView(R.layout.main_screen);
                 }
                 else
                 {
@@ -79,8 +73,9 @@ public class MainScreen extends Activity {
             //Makes the new expense and adds it to the trip list
             int id = myBusinessTrip.size();
             myBusinessTrip.add(new BusinessTrip(newName, id));
-            //adds the trip to the list
             tripNames.add(newName);
+            //adds the trip to the list
+            mediaPlayer.start();
             setContentView(R.layout.main_screen);
         }
         else
@@ -93,18 +88,12 @@ public class MainScreen extends Activity {
     }
 
     //removes a businessTrip from the list
-    public void RemoveTrip(BusinessTrip tripForDelete)
+    public void RemoveTrip(int id)
     {
         /*
         //removing the trip from the list + spinner list
-        tripNames.remove(tripForDelete.id);
-        myBusinessTrip.remove(tripForDelete.id);
-        //resets the tripNames
-        for (String name: tripNames)
-        {
-            //removes the trip from this list
-            name = null;
-        }
+        myBusinessTrip.remove(id);
+        tripNames.remove(id);
         ArrayList<BusinessTrip> tmp = new ArrayList<BusinessTrip>();
         ArrayList<String> tmpNames = new ArrayList<String>();
         //updates the spinner list + resets all id's
@@ -119,32 +108,43 @@ public class MainScreen extends Activity {
         }
         //resets the lists so the tmp lists gets set instead
         myBusinessTrip = tmp;
-        tripNames = tmpNames;
         currentTrip = myBusinessTrip.get(0);
-    */
+        */
     }
 
     public void AddNewExpense(View v)
     {
+        mediaPlayer.start();
         Intent intent = new Intent(this, secondscreen.class);
         startActivity(intent);
     }
 
     public void SeeExpenses(View view)
     {
+        mediaPlayer.start();
         Intent intent = new Intent(this, SeeExpenses.class);
         startActivity(intent);
     }
 
     public void Cost (View v)
     {
-        totalCost = ((BusinessTrip) currentTrip).CalcTotalPrice(null);
+        if(((BusinessTrip)currentTrip).myExpenses.size()>0){
+            totalCost = ((BusinessTrip) currentTrip).CalcTotalPrice(null);
+
+            Toast toast = Toast.makeText(MainScreen.this  , "Total expense: "+ totalCost, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else{
+            Toast toast = Toast.makeText(MainScreen.this  , "No Expenses yet", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
     }
 
     public void RemoveCurrently (View v)
     {
         if(myBusinessTrip.size()>1){
-            RemoveTrip((BusinessTrip)currentTrip);
+            RemoveTrip(((BusinessTrip)currentTrip).id);
         }else{
             //makes a toast to tell user the error
             Toast toast = Toast.makeText(MainScreen.this  , "Must have minimum 2 businesstrips, Create a new before deleting this trip", Toast.LENGTH_SHORT);
@@ -155,10 +155,12 @@ public class MainScreen extends Activity {
 
         final  EditText newnametrip = findViewById(R.id.businesstripNameText);
         newName = newnametrip.getText().toString();
+        mediaPlayer.start();
         NewTrip(v);
     }
 
     public void NewButton(View v){
+        mediaPlayer.start();
         setContentView(R.layout.newtrip);
     }
 }

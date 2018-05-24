@@ -27,6 +27,7 @@ public class SeeExpenses extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 MainScreen.currentTrip = adapterView.getItemAtPosition(i);
+                MainScreen.mediaPlayer.start();
                 finish();
             }
         });
